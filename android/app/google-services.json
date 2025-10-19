@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "485400194709",
+    "project_id": "phu1-f4d31",
+    "storage_bucket": "phu1-f4d31.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:485400194709:android:da5d3c738f28bb0070759c",
+        "android_client_info": {
+          "package_name": "com.example.inventory_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcjRNp70aUxW5mJb56uEtGbfl_-xTTgxs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:485400194709:android:48b5a31541e7481570759c",
+        "android_client_info": {
+          "package_name": "com.example.nguyenvana"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcjRNp70aUxW5mJb56uEtGbfl_-xTTgxs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:485400194709:android:322fbc948113f26f70759c",
+        "android_client_info": {
+          "package_name": "phu.example.com"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcjRNp70aUxW5mJb56uEtGbfl_-xTTgxs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
