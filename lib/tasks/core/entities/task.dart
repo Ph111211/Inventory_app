@@ -7,7 +7,7 @@ class Task {
   final String description;
   final bool isCompleted;
 
-  Task({
+  const Task({
     this.id,
     required this.title,
     required this.description,

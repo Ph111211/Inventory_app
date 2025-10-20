@@ -9,7 +9,7 @@ import 'package:inventory_app/tasks/core/use_cases/create_task.dart';
 import 'package:inventory_app/tasks/core/use_cases/delete_task.dart';
 import 'package:inventory_app/tasks/core/use_cases/getAllTask.dart';
 
-import 'package:inventory_app/tasks/core/use_cases/update_Task.dart';
+import 'package:inventory_app/tasks/core/use_cases/update_task.dart';
 import 'package:inventory_app/tasks/data/repositories/task_repository_impl.dart';
 import 'package:inventory_app/firebase_options.dart';
 

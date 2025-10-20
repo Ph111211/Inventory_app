@@ -4,8 +4,10 @@ import 'package:inventory_app/tasks/core/use_cases/getAllTask.dart';
 import 'package:inventory_app/tasks/core/use_cases/delete_task.dart';
 import '../../../main.dart';
 // import 
-// import 'package:inventory_app/presentation/use_cases/create_task.dart';
+import 'package:inventory_app/tasks/core/use_cases/create_task.dart';
 import 'package:inventory_app/main.dart';
+import 'package:inventory_app/tasks/presentation/widgets/add_task.dart';
+import 'package:inventory_app/tasks/presentation/widgets/edit_task.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -23,22 +25,22 @@ class _HomeScreenState extends State<HomeScreen> {
             builder: (context) {
             return const AlertDialog(
                 title: Text('ADD TASK'),
-                // content: AddTask(),
+                content: AddTask(),
             );
             });
     }
-    // void editTask(Task task) {
-    //     showDialog(
-    //         context: context,
-    //         builder: (context) {
-    //         return AlertDialog(
-    //             title: const Text('UPDATE TASK'),
-    //             content: EditTask(
-    //             task: task,
-    //             ),
-    //         );
-    //         });
-    // }
+    void editTask(Task task) {
+        showDialog(
+            context: context,
+            builder: (context) {
+            return AlertDialog(
+                title: const Text('UPDATE TASK'),
+                content: EditTask(
+                task: task,
+                ),
+            );
+            });
+    }
     Future<void> deleteTask(Task task) async {
         //
         showDialog(
@@ -91,10 +93,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     trailing: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                        // IconButton(
-                        //     icon: const Icon(Icons.edit),
-                        //     onPressed: () => editTask(task),
-                        // ),
+                        IconButton(
+                            icon: const Icon(Icons.edit),
+                            onPressed: () => editTask(task),
+                        ),
                         IconButton(
                             icon: const Icon(Icons.delete),
                             onPressed: () => deleteTask(task),
