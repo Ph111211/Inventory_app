@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:inventory_app/tasks/core/entities/task.dart';
-import 'package:inventory_app/tasks/presentation/widgets/task_form.dart';
-import 'package:inventory_app/main.dart';
-import 'package:inventory_app/tasks/core/use_cases/update_task.dart';
+
+import '../../../main.dart';
+import '../../core/entities/task.dart';
+import '../../core/use_cases/update_task.dart';
+import './task_form.dart';
 class EditTask extends StatefulWidget {
   const EditTask({
     super.key,

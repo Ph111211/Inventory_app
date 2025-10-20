@@ -15,5 +15,5 @@ abstract class TaskRepository {
   // delete the task
   Future<void> delete(String id);
   //find tasks by status
-  Stream<List<Task>> findByStatus(bool isCompleted);
+  Stream<List<Task>> findByStatusAndCategory(bool status, String category);
 }

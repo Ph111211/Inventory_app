@@ -1,45 +1,65 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 @immutable
 class Task {
-  final String? id;
+  final String? userId;
   final String title;
   final String description;
-  final bool isCompleted;
+  final String category;
+  final Timestamp dueDate;
+  final Timestamp createdAt;
+  final bool status;
 
-  const Task({
-    this.id,
+
+   const Task({
+    this.userId,
     required this.title,
     required this.description,
-    this.isCompleted = false,
+    required this.category,
+    required this.dueDate,
+    required this.createdAt,
+    required this.status,
   });
   factory Task.fromJson(Map<String, dynamic> json) {
     return Task(
-      id: json['id'],
+      userId: json['userId'],
       title: json['title'],
       description: json['description'],
-      isCompleted: json['isCompleted'] ?? false,
+      category: json['category'],
+      dueDate: json['dueDate'],
+      createdAt: json['createdAt'],
+      status: json['status'],
     );
   }
     Map<String, dynamic> toJson() {
         return {
-        'id': id,
+        'userId': userId,
         'title': title,
         'description': description,
-        'isCompleted': isCompleted,
+        'category': category,
+        'dueDate': dueDate,
+        'createdAt': createdAt,
+        'status': status,
         };
     }
     Task copyWith({
-        String? id,
+        String? userId,
         String? title,
         String? description,
-        bool? isCompleted,
+        String? category,
+        Timestamp? dueDate,
+        Timestamp? createdAt,
+        bool? status,
     }) {
         return Task(
-        id: id ?? this.id,
+        userId: userId ?? this.userId,
         title: title ?? this.title,
         description: description ?? this.description,
-        isCompleted: isCompleted ?? this.isCompleted,
+        category: category ?? this.category,
+        dueDate: dueDate ?? this.dueDate,
+        createdAt: createdAt ?? this.createdAt,
+        status: status ?? this.status,
         );
     }
     

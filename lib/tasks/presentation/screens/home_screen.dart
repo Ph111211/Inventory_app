@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:inventory_app/tasks/core/entities/task.dart';
-import 'package:inventory_app/tasks/core/use_cases/getAllTask.dart';
-import 'package:inventory_app/tasks/core/use_cases/delete_task.dart';
 import '../../../main.dart';
-// import 
-import 'package:inventory_app/tasks/core/use_cases/create_task.dart';
-import 'package:inventory_app/main.dart';
-import 'package:inventory_app/tasks/presentation/widgets/add_task.dart';
-import 'package:inventory_app/tasks/presentation/widgets/edit_task.dart';
+import '../../core/entities/task.dart';
+import '../../core/use_cases/getAllTask.dart';
+import '../../core/use_cases/delete_task.dart';
+import '../widgets/add_task.dart';
+import '../widgets/edit_task.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -57,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: const Text('CANCEL')),
                 FilledButton(
                     onPressed: () async {
-                    await _deleteTaskUseCase.call(task.id!);
+                    await _deleteTaskUseCase.call(task.userId!);
                     Navigator.pop(context);
                     },
                     child: const Text('DELETE')),

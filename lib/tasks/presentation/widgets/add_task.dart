@@ -1,8 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:inventory_app/tasks/core/entities/task.dart';
-import 'package:inventory_app/tasks/presentation/widgets/task_form.dart';
-import 'package:inventory_app/main.dart';
-import 'package:inventory_app/tasks/core/use_cases/create_task.dart';
+import '../../../main.dart';
+import '../../core/entities/task.dart';
+import '../../core/use_cases/create_task.dart';
+import '../widgets/task_form.dart';
 class AddTask extends StatefulWidget {
   const AddTask({
     super.key,
@@ -27,10 +28,14 @@ class _AddTaskState extends State<AddTask> {
   @override
   Widget build(BuildContext context) {
     return TaskForm(
-      task: const Task(
+      task: Task(
         title: '',
         description: '',
-        isCompleted: false,
+        category: '',
+        status: false,
+        dueDate: Timestamp.now(),
+        createdAt: Timestamp.now(),
+
       ),
       onSubmit: (Task task) {
         onSubmit(task);
