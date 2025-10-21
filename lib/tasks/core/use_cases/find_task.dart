@@ -1,12 +1,12 @@
 import '../entities/task.dart';
 import '../repositories/task_repository.dart';
 
-class FindTaskByCategoryAndStatusUseCase {
+class FindTaskByCategoryOrStatusUseCase {
   final TaskRepository _taskRepository;
 
-  FindTaskByCategoryAndStatusUseCase(this._taskRepository);
+  FindTaskByCategoryOrStatusUseCase(this._taskRepository);
 
   Stream<List<Task>> call(bool status, String category) async* {
-    yield* _taskRepository.findByStatusAndCategory(status, category);
+    yield* _taskRepository.findByStatusOrCategory(status, category);
   }
 }

@@ -179,14 +179,46 @@ class TaskRepositoryImpl implements TaskRepository {
   }
 
   @override
-  Stream<List<Task>> findByStatusAndCategory(bool status, String category) {
-    return _firestore
+  Stream<List<Task>> findByStatusOrCategory(bool status, String category) async* {
+    final statusStream = _firestore
         .collection('tasks')
         .where('status', isEqualTo: status)
+        .snapshots();
+
+    final categoryStream = _firestore
+        .collection('tasks')
         .where('category', isEqualTo: category)
-        .snapshots()
-        .map((snapshot) {
-      return snapshot.docs.map((doc) {
+        .snapshots();
+
+    await for (final statusSnapshot in statusStream) {
+      final categorySnapshot = await categoryStream.first;
+      if (category.isEmpty) {
+        // Nếu category rỗng, chỉ trả về kết quả theo status
+        yield statusSnapshot.docs.map((doc) {
+          final data = doc.data();
+          return Task(
+            userId: doc.id,
+            title: data['title'] ?? '',
+            description: data['description'] ?? '',
+            category: data['category'] ?? '',
+            dueDate: (data['dueDate'] is Timestamp)
+                ? data['dueDate'] as Timestamp
+                : Timestamp.now(),
+            createdAt: (data['createdAt'] is Timestamp)
+                ? data['createdAt'] as Timestamp
+                : Timestamp.now(),
+            status: data['status'] ?? false,
+          );
+        }).toList();
+        continue;
+      }
+      // Gộp 2 danh sách và loại bỏ trùng lặp theo ID
+      final allDocs = {
+        for (var doc in [...statusSnapshot.docs, ...categorySnapshot.docs])
+          doc.id: doc
+      };
+
+      yield allDocs.values.map((doc) {
         final data = doc.data();
         return Task(
           userId: doc.id,
@@ -202,6 +234,6 @@ class TaskRepositoryImpl implements TaskRepository {
           status: data['status'] ?? false,
         );
       }).toList();
-    });
+    }
   }
 }

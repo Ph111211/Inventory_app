@@ -46,6 +46,6 @@ void loadDependencies() {
       () => updateTaskUseCase(locator<TaskRepository>()));
   locator.registerLazySingleton<DeleteTaskUseCase>(
       () => DeleteTaskUseCase(locator<TaskRepository>()));
-  locator.registerLazySingleton<FindTaskByCategoryAndStatusUseCase>(
-      () => FindTaskByCategoryAndStatusUseCase(locator<TaskRepository>()));
+  locator.registerLazySingleton<FindTaskByCategoryOrStatusUseCase>(
+      () => FindTaskByCategoryOrStatusUseCase(locator<TaskRepository>()));
 }
